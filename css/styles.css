@@ -3,17 +3,21 @@
     --button-color: #2196F3;
     --button-accent-color: #188CE8;
     --icon-primary-color: #AFB1B8;
+    --shadow-color: rgba(0, 0, 0, 0.15);
 
     /* border colors */
     --border-color: #ECECEC;
     --border-card-color: #EEEEEE;
     --border-costumers-color: var(--icon-primary-color);
+    --border-send-color: rgba(255, 255, 255, 0.3);
+    --border-input-color: rgba(33, 33, 33, 0.2);
 
     /* text colors */
     --text-main-color: #757575;
     --text-accent-color: #212121;
     --logo-color: #000000;
     --contacts-color: rgba(255, 255, 255, 0.6);
+    --placeholder-color: rgba(117, 117, 117, 0.5);
     
     /* background colors */
     --bg-main-color: var(--primary-white-color);
@@ -31,6 +35,7 @@
     --letter-spacing-main: 0.03em;
     --letter-spacing-accent: 0.02em;
     --letter-spacing-second: 0.06em;
+    --letter-spacing-form: 0.01em;
 
     --cubic-bezier: cubic-bezier(0.4, 0, 0.2, 1);
     --duration: 250ms;
@@ -268,7 +273,7 @@ p {
 .button {
     padding: 10px 32px;
 
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 4px 4px var(--shadow-color);
     border-radius: 4px;
     border: none;
 
@@ -544,7 +549,8 @@ p {
     margin-top: 12px;
 }
 
-.social-links-text {
+.social-links-text,
+.mailing-list-text {
     margin-bottom: 20px;
 
     font-weight: 700;
@@ -573,6 +579,85 @@ p {
     background-color: var(--button-color);
 }
 
+/* Mailing list */
+
+.mailing-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 12px;
+    margin-left: auto;
+}
+
+.send-block {
+    display: flex;
+    flex-direction: row;
+}
+
+input[placeholder="E-mail"] {
+    padding: 0 0 0 16px;
+    margin-right: 12px;
+    width: 358px;
+    height: 50px;
+
+    color: var(--primary-white-color);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25;
+    
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--border-send-color);
+    border-radius: 4px;
+
+    filter: drop-shadow(0px 4px 4px var(--shadow-color));
+
+    background-color: transparent;
+}
+
+input[placeholder="E-mail"]:focus {
+    outline: 1px solid var(--primary-white-color);
+}
+
+input[placeholder="E-mail"]::placeholder {
+    color: var(--contacts-color);
+}
+
+.send-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+    margin-left: 0px;
+   
+    width: 200px;
+    
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.88;
+    letter-spacing: var(--letter-spacing-second);
+    color: var(--primary-white-color);
+
+    box-shadow: 0px 4px 4px var(--shadow-color);
+    border: none;
+    border-radius: 4px;
+
+    background-color: var(--button-color);
+    cursor: pointer;
+
+    transition: background-color var(--duration) var(--cubic-bezier);
+}
+
+.send-button:hover,
+.send-button:focus {
+    background-color: var(--button-accent-color);
+}
+
+.send-icon {
+    fill: currentColor;
+    margin-left: 10px;
+}
+
+/* Modal window */
 .backdrop {
     position: fixed;
     top: 0;
@@ -603,9 +688,8 @@ p {
     position: absolute;
     top: 50%;
     left: 50%;
+    padding: 40px;
 
-    min-width: 528px;
-    min-height: 581px;
     border-radius: 4px;
 
     background-color: var(--primary-white-color);
@@ -627,6 +711,8 @@ p {
     border-radius: 50%;
     background-color: inherit;
     cursor: pointer;
+
+    transition: color var(--duration) var(--cubic-bezier);
 }
 
 .close-button-icon {
@@ -634,12 +720,174 @@ p {
     justify-content: center;
     align-items: center;
 
-    fill: inherit;
+    fill: currentColor;
 }
 
 .modal-close-button:hover,
 .modal-close-button:focus {
-    fill: var(--button-color)
+    color: var(--button-color)
+}
+
+.user-form {
+    width: 448px;
+}
+
+.form-title {
+    margin-bottom: 12px;
+
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.15;
+    text-align: center;
+
+    color: var(--text-accent-color);
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field + .form-field {
+    margin-top: 10px;
+}
+
+.form-label {
+    margin-bottom: 4px;
+
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: var(--letter-spacing-form);
+}
+
+.form-input-box {
+    position: relative;
+
+    color: var(--text-accent-color);
+
+    transition: color var(--duration) var(--cubic-bezier);
+}
+
+.form-input,
+.comment {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    padding-left: 42px;
+
+    color: var(--text-accent-color);
+
+    border: 1px solid var(--border-input-color);
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    transition: border-color var(--duration) var(--cubic-bezier),
+    outline var(--duration) var(--cubic-bezier);
+}
+
+.form-input:hover,
+.form-input:focus,
+.comment:hover,
+.comment:focus {
+    border-color: var(--button-color);
+    outline: 1px solid var(--button-color);
+}
+
+.form-label-icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    display: inline-block;
+
+    fill: currentColor;
+
+    transform: translateY(-50%);
+    
+    transition: color var(--duration) var(--cubic-bezier);
+}
+
+.form-input-box:hover,
+.form-label:hover + .form-input-box,
+.form-input:focus + .form-label-icon {
+    color: var(--button-color);
+}
+
+.form-field.comment-field {
+    margin-bottom: 20px;
+}
+
+.comment {
+    padding: 12px 16px;
+    resize: none;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.14;
+    letter-spacing: var(--letter-spacing-form);
+}
+
+.comment::placeholder {
+    color: var(--placeholder-color);
+}
+
+.policy-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.71;
+}
+
+.policy-checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+}
+
+.policy-icon {
+    position: relative;
+    margin-right: 7px;
+
+    width: 16px;
+    height: 15px;
+
+    border: 2px solid var(--text-accent-color);
+    border-radius: 4px;
+
+    transition: background-color var(--duration) var(--cubic-bezier),
+    border-color var(--duration) var(--cubic-bezier);
+}
+
+.checkbox-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.policy-checkbox:checked + .policy-icon {
+    background-color: var(--button-color);
+    border-color: var(--button-color);
+}
+
+.policy-link {
+    color: var(--button-color);
+}
+
+.user-form > .send-button {
+    margin: 0 auto;
 }
 
 /* Portfolio */
