@@ -498,6 +498,7 @@ p {
 
 .footer > .container {
     display: flex;
+    align-items: baseline;
 }
 
 .footer {
@@ -543,14 +544,9 @@ p {
 
 /* Social links */
 
-.footer .social-links {
-    display: inline-flex;
-    flex-direction: column;
-    margin-top: 12px;
-}
-
 .social-links-text,
 .mailing-list-text {
+    display: block;
     margin-bottom: 20px;
 
     font-weight: 700;
@@ -582,9 +578,6 @@ p {
 /* Mailing list */
 
 .mailing-list {
-    display: flex;
-    flex-direction: column;
-    margin-top: 12px;
     margin-left: auto;
 }
 
